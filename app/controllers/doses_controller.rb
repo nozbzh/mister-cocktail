@@ -1,9 +1,5 @@
 class DosesController < ApplicationController
-  before_action :find_cocktail, only: [ :new, :create, :destroy ]
-  def new
-    @ingredients = Ingredient.all
-    @dose = Dose.new
-  end
+  before_action :find_cocktail, only: [ :create, :destroy ]
 
   def create
     @dose = @cocktail.doses.build(dose_params)

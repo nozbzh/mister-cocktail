@@ -9,8 +9,17 @@
   </ul>
 </p>
 
-
-<p><%= link_to "add a dose", new_cocktail_dose_path(@cocktail) %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+        <%= f.input :ingredient_id, collection: @ingredients, as: :select %>
+        <%= f.input :description %>
+        <%= f.button :submit, value: "Add an ingredient" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 
 <p><%= link_to "Back to list", cocktails_path %></p>
