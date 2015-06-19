@@ -2,17 +2,21 @@
 
 <p>Ingredients:
   <ul>
-      <% @cocktail.doses.each do |dose| %>
-        <li><%= dose.description %> <%= dose.ingredient.name %> <%= link_to "delete", cocktail_dose_path(@cocktail, dose),
-        method: :delete, data: { confirm: "Are you sure?" } %></li>
-      <% end %>
+    <% @cocktail.doses.each do |dose| %>
+      <li><%= dose.description %> <%= dose.ingredient.name %> <%= link_to "delete", cocktail_dose_path(@cocktail, dose),
+      method: :delete, data: { confirm: "Are you sure?" } %></li>
+    <% end %>
   </ul>
 </p>
+
+
+<p>You can add an ingredient: </p>
 
 <div class="container">
   <div class="row">
     <div class="col-xs-6">
       <%= simple_form_for [@cocktail, @dose] do |f| %>
+        <%= f.error_notification %>
         <%= f.input :ingredient_id, collection: @ingredients, as: :select %>
         <%= f.input :description %>
         <%= f.button :submit, value: "Add an ingredient" %>
