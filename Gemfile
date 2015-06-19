@@ -27,6 +27,8 @@ gem 'bootstrap-sass', '~> 3.3.1'
 gem 'font-awesome-sass', '~> 4.2.0'
 gem 'simple_form'
 gem 'figaro'
+gem 'aws-sdk', '< 2.0'
+gem 'paperclip'
 
 ruby '2.2.2'
 gem 'rails_12factor', group: :production

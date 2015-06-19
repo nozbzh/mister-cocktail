@@ -1,14 +1,27 @@
 <h1><%= @cocktail.name %></h1>
 
+<% if @cocktail.picture.present? %>
+  <%= image_tag @cocktail.picture.url(:medium) %>
+<% else %>
+  <br>
+<% end %>
+
+<br>
+<br>
+<br>
+
 <p>Ingredients:
   <ul>
     <% @cocktail.doses.each do |dose| %>
-      <li><%= dose.description %> <%= dose.ingredient.name %> <%= link_to "delete", cocktail_dose_path(@cocktail, dose),
+      <% if dose.persisted? %>
+        <li><%= dose.description %> <%= dose.ingredient.name %> <%= link_to "delete", cocktail_dose_path(@cocktail, dose),
       method: :delete, data: { confirm: "Are you sure?" } %></li>
+      <% end %>
     <% end %>
   </ul>
 </p>
 
+<br>
 
 <p>You can add an ingredient: </p>
 
